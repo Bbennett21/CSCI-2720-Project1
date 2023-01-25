@@ -5,10 +5,15 @@ public class SortedLinkedList {
     private NodeType head;
     private NodeType currentPos;
 
+    int length = 0;
+
     /**
      * Initializes a sorted linked list object.
      */
     public SortedLinkedList() {
+
+        head = null;
+        currentPos = null;
 
     } // SortedLinkedList
 
@@ -17,6 +22,13 @@ public class SortedLinkedList {
      */
     public int getLength() {
 
+        NodeType currentPos = head;
+        while (currentPos != null) {
+            length++;
+            currentPos = currentPos.link;
+        }
+        return length;
+
     } // getLength
 
     /**
@@ -24,6 +36,10 @@ public class SortedLinkedList {
      * @param item the item to be inserted.
      */
     public void insertItem(ItemType item) {
+
+        NodeType newNode = new NodeType();
+        newNode.info = item.copy();
+//        NodeType pred
 
     } // insertItem
 
