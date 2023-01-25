@@ -1,3 +1,4 @@
+import ItemType;
 public class NodeType {
 
     public ItemType info;
