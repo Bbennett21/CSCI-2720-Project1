@@ -10,22 +10,21 @@ public class LinkedListDriver {
 
           boolean quit = false;
           String input;
+
+
           Scanner scan = new Scanner(System.in);
+          ItemType item = new ItemType();
+          SortedLinkedList list = new SortedLinkedList();
 
-         Scanner getList = new Scanner(System.in);
-         ItemType item = new ItemType();
-         SortedLinkedList list = new SortedLinkedList();
+          while (scan.hasNext()) {
+              item.initialize(scan.nextInt());
+              list.insertItem(item);
+          } // while
 
-         while (getList.hasNext()) {
-             item.initialize(getList.nextInt());
-             list.insertItem(item);
-         } // while
 
-         getList.close();
-
-         while(quit == false) {
+          while(quit == false) {
              System.out.println("Enter a command: ");
-             input = scan.nextLine();
+             input = scan.next();
 
              if(input.equals("q")) {
                  quit = true;
