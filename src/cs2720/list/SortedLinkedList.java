@@ -28,7 +28,7 @@ public class SortedLinkedList {
         NodeType currentPos = head;
         while (currentPos != null) {
             length++;
-            currentPos = currentPos.link;
+            currentPos = currentPos.next;
         }
         return length;
 
@@ -45,14 +45,14 @@ public class SortedLinkedList {
         // If the list is empty, it creates a node that stores the item and sets the head to it.
         if (head == null) {
 
-            newNode.item = item;
+            newNode.info = item;
             newNode.next = null;
             head = newNode;
 
             //If the item is less than 0,
-        } else if (item.compareTo(head.item) < 0) {
+        } else if (item.compareTo(head.info) < 0) {
 
-            newNode.item = item;
+            newNode.info = item;
             newNode.next = head;
             head = newNode;
         } else {
@@ -71,12 +71,11 @@ public class SortedLinkedList {
 
         // Tells the user they can't delete from an empty list
         if (head == null) {
-            System.out.println("You can't delete from an empty list";
+            System.out.println("You can't delete from an empty list");
             } // If there's only one node, it makes the node empty
-            else if (head.getNextItem() == null && item.compareTo(head) == 0) {
+            else if (head.next == null && item.compareTo(head.info) == 0) {
                 head = null;
             } //
-            else if (
 
     } // deleteItem
 
@@ -85,7 +84,7 @@ public class SortedLinkedList {
      * @param item the item to search for.
      */
     public int searchItem(ItemType item) {
-
+        return 0;
     } // searchItem
 
     /**
@@ -97,7 +96,7 @@ public class SortedLinkedList {
         if (head == null) {
             System.out.println("The list is empty");
         }
-
+        return head.info;
     } // getNextItem
 
     /**

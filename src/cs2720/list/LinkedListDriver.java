@@ -17,7 +17,7 @@ public class LinkedListDriver {
          SortedLinkedList list = new SortedLinkedList();
 
          while (getList.hasNext()) {
-             item.initialize(getList.next());
+             item.initialize(getList.nextInt());
              list.insertItem(item);
          } // while
 

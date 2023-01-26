@@ -30,6 +30,6 @@ public class ItemType {
      * @param num The int val is initialized to.
      */
     void initialize(int num) {
-        this.value=num;
+        this.value = num;
     } // initialize
 } // ItemType
