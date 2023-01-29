@@ -12,22 +12,19 @@ public class SortedLinkedList {
      * Initializes a sorted linked list object.
      */
     public SortedLinkedList() {
-
         head = null;
         currentPos = null;
-
     } // SortedLinkedList
 
     /**
      * Returns the length of the linked list.
      */
     public int getLength() {
-
         int length = 0;
-        NodeType currentPos = head;
-        while (currentPos != null) {
+        NodeType temp = head;
+        while (temp != null) {
             length++;
-            currentPos = currentPos.next;
+            temp = temp.next;
         }
         return length;
 
@@ -40,43 +37,32 @@ public class SortedLinkedList {
     public void insertItem(ItemType item) {
 
         NodeType newNode = new NodeType();
-
+        newNode.info = item;
         // If the list is empty, it creates a node that stores the item and sets the head to it.
         if (head == null) {
-
-            newNode item = item;
             newNode.next = null;
             head = newNode;
-
-            //If the item is less than 0,
-        } else if (item.compareTo(head.item) < 0) {
-
-            newNode item = item;
+        } else if (head.info.compareTo(item) > 0) {
             newNode.next = head;
             head = newNode;
-
         } else {
-
-            NodeType predloc;
+            NodeType predloc = null;
             NodeType location = head;
-
             while (location != null) {
-                if (item.compareTo(location) < 0) {
-                    break;
-                }
-
-                if (item.compareTo(location) == 0) {
-                    System.out.println("You can't insert a duplicate item");
+                if (location.info.compareTo(item) == 0) {
+                    System.out.println("Sorry. You cannot insert a duplicate item.");
                     return;
-                }
-
-            }
-            predLoc = location;
-            location = location.next;
-
-        }
-
-
+                } else if (location.info.compareTo(item) > 0) {
+                    newNode.next = location;
+                    predloc.next = newNode;
+                    return;
+                } else {
+                    predloc = location;
+                    location = location.next;
+                } // if
+            } // while
+            predloc.next = newNode;
+        } // if
     } // insertItem
 
     /**
@@ -110,7 +96,7 @@ public class SortedLinkedList {
 
 
         while (temp != null) {
-            if (item.compareTo(temp.item) == 0) {
+            if (item.compareTo(temp.info) == 0) {
                 return index;
             }
             index++;
@@ -138,7 +124,7 @@ public class SortedLinkedList {
         else {
             currentPos = currentPos.next;
         }
-        return currentPos.item;
+        return currentPos.info;
     } // getNextItem
 
     /**
@@ -153,7 +139,7 @@ public class SortedLinkedList {
     /**
      * Merges two lists and doesn't include any duplicate items in the list.
      */
-    public void merge(int num, string input) {
+    public void merge(int num, String input) {
 
     }
 
@@ -174,7 +160,7 @@ public class SortedLinkedList {
      * Finds the common elements between input list and original list,
      * and then prints the results.
      */
-    public void intersect(int num, string input) {
+    public void intersect(int num, String input) {
 
     }
 

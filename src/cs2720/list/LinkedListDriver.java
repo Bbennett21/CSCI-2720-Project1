@@ -11,7 +11,8 @@ public class LinkedListDriver {
       public static void main(String[]args) {
 
           boolean quit = false;
-          String input = "";
+          String cmdInput;
+          int numInput;
           ItemType item = new ItemType();
           SortedLinkedList list = new SortedLinkedList();
 
@@ -20,7 +21,6 @@ public class LinkedListDriver {
 
               while (scanFile.hasNextInt()) {
                   item.initialize(scanFile.nextInt());
-                  System.out.println(item.getValue());
                   list.insertItem(item);
               } // while
 
@@ -32,29 +32,32 @@ public class LinkedListDriver {
 
           while(quit == false) {
              System.out.print("Enter a command: ");
-             input = userInput.next();
-             if(input.equals("q")) {
+             cmdInput = userInput.next();
+             if(cmdInput.equals("q")) {
                  quit = true;
-             } else if(input.equals("l")) {
+             } else if(cmdInput.equals("l")) {
                  System.out.println(list.getLength());
-             } else if(input.equals("p")) {
+             } else if(cmdInput.equals("p")) {
 
-             } else if(input.equals("t")) {
+             } else if(cmdInput.equals("t")) {
 
-			 } else if(input.equals("m")) {
+			 } else if(cmdInput.equals("m")) {
 
-             } else if(input.equals("a")) {
+             } else if(cmdInput.equals("a")) {
 
-             } else if(input.equals("r")) {
+             } else if(cmdInput.equals("r")) {
 
-             } else if(input.equals("n")) {
+             } else if(cmdInput.equals("n")) {
 
-             } else if(input.equals("s")) {
+             } else if(cmdInput.equals("s")) {
                  System.out.println("Enter a number to search: ");
-             } else if(input.equals("d")) {
+                 numInput = userInput.nextInt();
+             } else if(cmdInput.equals("d")) {
                  System.out.println("Enter a number to delete: ");
-             } else if(input.equals("i")) {
+                 numInput = userInput.nextInt();
+             } else if(cmdInput.equals("i")) {
                  System.out.println("Enter a number to insert: ");
+                 numInput = userInput.nextInt();
              } else {
 
              } // if
