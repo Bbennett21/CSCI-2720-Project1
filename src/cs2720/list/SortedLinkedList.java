@@ -118,6 +118,7 @@ public class SortedLinkedList {
 
 
 
+
         return -1;
     } // searchItem
 
@@ -128,9 +129,16 @@ public class SortedLinkedList {
 
         // Tells the user that the list is empty
         if (head == null) {
+            ItemType temp;
             System.out.println("The list is empty");
         }
-        return head.info;
+        if (currentPos.next == null || currentPos == null) {
+            currentPos = head;
+        }
+        else {
+            currentPos = currentPos.next;
+        }
+        return currentPos.item;
     } // getNextItem
 
     /**
@@ -143,9 +151,30 @@ public class SortedLinkedList {
     } // resetList
 
     /**
-     *
+     * Merges two lists and doesn't include any duplicate items in the list.
      */
     public void merge(int num, string input) {
+
+    }
+
+    /**
+     * Deletes alternate nodes from the list.
+     */
+    public void deleteAlt() {
+        if (head == null) {
+            System.out.println("You can't delete from an empty list");
+        }
+        else {
+            int index = 1;
+
+        }
+    }
+
+    /**
+     * Finds the common elements between input list and original list,
+     * and then prints the results.
+     */
+    public void intersect(int num, string input) {
 
     }
 
