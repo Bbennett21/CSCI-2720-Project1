@@ -37,38 +37,24 @@ public class SortedLinkedList {
     public void insertItem(ItemType item) {
         NodeType newNode = new NodeType();
         newNode.info = item;
-        if(head != null)
-            System.out.println(head.info.getValue());
+        newNode.next = null;
         // If the list is empty, it creates a node that stores the item and sets the head to it.
         if (head == null) {
             head = newNode;
-            System.out.println("set head");
         } else if (head.info.compareTo(item) > 0) {
             newNode.next = head;
             head = newNode;
-            System.out.println("newhead");
         } else {
-            NodeType predloc = null;
             NodeType location = head;
-            while (location != null) {
-                System.out.println(location.info.getValue());
-                if (location.info.compareTo(item) == 0) {
-                    System.out.println("Sorry. You cannot insert a duplicate item.");
-                    return;
-                } else if (location.info.compareTo(item) > 0) {
-                    System.out.println("smaller");
-                    newNode.next = location;
-                    predloc.next = newNode;
-                    return;
-                } else {
-                    System.out.println("move forward");
-                    predloc = location;
-                    location = location.next;
-                } // if
-                System.out.println("loop");
-            } // while
-            System.out.println("end");
-            predloc.next = newNode;
+            while (location.next != null && item.compareTo(location.next.info) > 0) {
+                location = location.next;
+            } //while
+            if (location.next != null && item.compareTo(location.next.info) == 0) {
+                System.out.println("Sorry. You cannot insert the duplicate item");
+            } else {
+                newNode.next = location.next;
+                location.next = newNode;
+            } // if
         } // if
     } // insertItem
 
@@ -77,15 +63,28 @@ public class SortedLinkedList {
      * @param item the item to be deleted.
      */
     public void deleteItem(ItemType item) {
+        NodeType current = head;
+        NodeType previous = null;
+        boolean found = false;
 
-        // Tells the user they can't delete from an empty list
-        if (head == null) {
-            System.out.println("You can't delete from an empty list");
-            } // If there's only one node, it makes the node empty
-            else if (head.next == null && item.compareTo(head.info) == 0) {
-                head = null;
-            } //
+        while (current != null && !found) {
+            if (current.info.compareTo(item) == 0) {
+                found = true;
+            } else {
+                previous = current;
+                current = current.next;
+            } // if
+        } // while
 
+        if (!found) {
+            System.out.println("Item not found");
+        } else if (current == head) {
+            head = head.next;
+        } else if (current.next == null) {
+            previous.next = null;
+        } else {
+            previous.next = current.next;
+        } // if
     } // deleteItem
 
     /**
@@ -93,44 +92,43 @@ public class SortedLinkedList {
      * @param item the item to search for.
      */
     public int searchItem(ItemType item) {
-
         NodeType temp = head;
-        if (temp == null) {
-            return -1;
-        }
-
         int index = 0;
+        boolean found = false;
+        while (temp != null && !found) {
+            if (temp.info.compareTo(item) == 0) {
+                found = true;
+            } else {
+                temp = temp.next;
+                index++;
+            } // if
+        } // while
 
-
-        while (temp != null) {
-            if (item.compareTo(temp.info) == 0) {
-                return index;
-            }
-            index++;
-        }
-
-
-
-
-        return -1;
+        if (!found) {
+            System.out.println("Item not found");
+            return -1;
+        } else {
+            return index;
+        } // if
     } // searchItem
 
     /**
      * Returns the next item in the list pointed by the currentPos.
      */
     public ItemType getNextItem() {
-
-        // Tells the user that the list is empty
         if (head == null) {
-            ItemType temp;
-            System.out.println("The list is empty");
-        }
-        if (currentPos.next == null || currentPos == null) {
+            System.out.println("List is empty");
+            return null;
+        } // if
+        if (currentPos == null) {
             currentPos = head;
-        }
-        else {
-            currentPos = currentPos.next;
-        }
+            return currentPos.info;
+        } // if
+        if (currentPos.next == null) {
+            System.out.println("The end of the list has been reached");
+            return null;
+        } // if
+        currentPos = currentPos.next;
         return currentPos.info;
     } // getNextItem
 
@@ -138,9 +136,7 @@ public class SortedLinkedList {
      * Initialize the currentPos variable to null.
      */
     public void resetList() {
-
         currentPos = null;
-
     } // resetList
 
     /**

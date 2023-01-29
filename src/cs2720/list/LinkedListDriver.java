@@ -17,11 +17,10 @@ public class LinkedListDriver {
           SortedLinkedList list = new SortedLinkedList();
 
           try {
-              Scanner scanFile = new Scanner(new File(args[0]));
-
-              while (scanFile.hasNextInt()) {
+              File inputFile = new File(args[0]);
+              Scanner scanFile = new Scanner(inputFile);
+              while (scanFile.hasNext()) {
                   item.initialize(scanFile.nextInt());
-                  System.out.println(item.getValue());
                   list.insertItem(item);
               } // while
 
@@ -37,8 +36,10 @@ public class LinkedListDriver {
              cmdInput = userInput.next();
              if(cmdInput.equals("q")) {
                  quit = true;
+
              } else if(cmdInput.equals("l")) {
-                 System.out.println(list.getLength());
+                 System.out.println("Length of list: " + list.getLength());
+
              } else if(cmdInput.equals("p")) {
 
              } else if(cmdInput.equals("t")) {
@@ -48,20 +49,35 @@ public class LinkedListDriver {
              } else if(cmdInput.equals("a")) {
 
              } else if(cmdInput.equals("r")) {
-
+                 list.resetList();
              } else if(cmdInput.equals("n")) {
+                 if (item != null) {
+                     System.out.println("Next item: " + item.getValue());
+                 } else {
+                     System.out.println("The end of the list has been reached");
+                 } // if
 
              } else if(cmdInput.equals("s")) {
-                 System.out.println("Enter a number to search: ");
+                 System.out.print("Enter a number to search: ");
                  numInput = userInput.nextInt();
-             } else if(cmdInput.equals("d")) {
-                 System.out.println("Enter a number to delete: ");
-                 numInput = userInput.nextInt();
-             } else if(cmdInput.equals("i")) {
-                 System.out.println("Enter a number to insert: ");
-                 numInput = userInput.nextInt();
-             } else {
+                 item.initialize(numInput);
+                 int index = list.searchItem(item);
+                 System.out.println("Item is found at index: " + index);
 
+             } else if(cmdInput.equals("d")) {
+                 System.out.print("Enter a number to delete: ");
+                 numInput = userInput.nextInt();
+                 item.initialize(numInput);
+                  list.deleteItem(item);
+
+             } else if(cmdInput.equals("i")) {
+                 System.out.print("Enter a number to insert: ");
+                 numInput = userInput.nextInt();
+                 item.initialize(numInput);
+                 list.insertItem(item);
+
+             } else {
+                 System.out.println("Invalid command, try again!");
              } // if
           } // while
       } // main

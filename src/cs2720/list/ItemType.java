@@ -9,12 +9,12 @@ public class ItemType {
      * @param item the item to be compared with.
      */
     int compareTo(ItemType item) {
-        if(this.value > item.getValue()) {
-            return 1;
-        } else if(item.getValue() == this.value) {
+        if (this.value < item.getValue()) {
+            return -1;
+        } else if (this.value == item.getValue()) {
             return 0;
         } else {
-            return -1;
+            return 1;
         } // if
     } // compareTo
 
