@@ -35,32 +35,39 @@ public class SortedLinkedList {
      * @param item the item to be inserted.
      */
     public void insertItem(ItemType item) {
-
         NodeType newNode = new NodeType();
         newNode.info = item;
+        if(head != null)
+            System.out.println(head.info.getValue());
         // If the list is empty, it creates a node that stores the item and sets the head to it.
         if (head == null) {
-            newNode.next = null;
             head = newNode;
+            System.out.println("set head");
         } else if (head.info.compareTo(item) > 0) {
             newNode.next = head;
             head = newNode;
+            System.out.println("newhead");
         } else {
             NodeType predloc = null;
             NodeType location = head;
             while (location != null) {
+                System.out.println(location.info.getValue());
                 if (location.info.compareTo(item) == 0) {
                     System.out.println("Sorry. You cannot insert a duplicate item.");
                     return;
                 } else if (location.info.compareTo(item) > 0) {
+                    System.out.println("smaller");
                     newNode.next = location;
                     predloc.next = newNode;
                     return;
                 } else {
+                    System.out.println("move forward");
                     predloc = location;
                     location = location.next;
                 } // if
+                System.out.println("loop");
             } // while
+            System.out.println("end");
             predloc.next = newNode;
         } // if
     } // insertItem

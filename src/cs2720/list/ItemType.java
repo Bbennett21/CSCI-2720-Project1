@@ -9,12 +9,12 @@ public class ItemType {
      * @param item the item to be compared with.
      */
     int compareTo(ItemType item) {
-        if(item.getValue() > this.value) {
-            return -1;
+        if(this.value > item.getValue()) {
+            return 1;
         } else if(item.getValue() == this.value) {
             return 0;
         } else {
-            return 1;
+            return -1;
         } // if
     } // compareTo
 
@@ -30,9 +30,7 @@ public class ItemType {
      * @param num The int val is initialized to.
      */
     void initialize(int num) {
-
         this.value = num;
-
     } // initialize
 
 } // ItemType

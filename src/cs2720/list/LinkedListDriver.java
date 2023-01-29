@@ -21,6 +21,7 @@ public class LinkedListDriver {
 
               while (scanFile.hasNextInt()) {
                   item.initialize(scanFile.nextInt());
+                  System.out.println(item.getValue());
                   list.insertItem(item);
               } // while
 
@@ -28,6 +29,7 @@ public class LinkedListDriver {
               System.out.println("Error: Input file not found.");
               return;
           } // try
+
           Scanner userInput = new Scanner(System.in);
 
           while(quit == false) {

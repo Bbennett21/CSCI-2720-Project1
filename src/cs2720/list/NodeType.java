@@ -7,14 +7,4 @@ public class NodeType {
     public ItemType info;
     public NodeType next;
 
-    /*
-
-    public void getNext() {
-        return next;
-    }
-
-    public void setNext() {
-        this.node = next;
-    }
-    */
 } // NodeType
