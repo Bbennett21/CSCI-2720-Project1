@@ -182,23 +182,6 @@ public class SortedLinkedList {
             temp = temp.next;
         }
 
-/*
-        else {
-            int index = 0;
-            NodeType current = head;
-            NodeType single = null;
-            while (current != null) {
-                if (index % 2 == 0) {
-                    if (single) {
-                        single.next = current.next;
-                    }
-                    current.next = null;
-                    continue;
-                }
-                single = current;
-            }
-        }
-*/
     } // deleteAlt
 
     /**
@@ -210,7 +193,7 @@ public class SortedLinkedList {
         NodeType head1 = this.head;
         NodeType head2 = list2.head;
 
-        SortedLinkedList newList = new SortedLinkedList();
+//        SortedLinkedList newList = new SortedLinkedList();
 
         NodeType currentPos1 = head1;
         NodeType currentPos2 = head2;
@@ -218,7 +201,8 @@ public class SortedLinkedList {
         while (currentPos1 != null && currentPos2 != null) {
 
             if (currentPos1.info == currentPos2.info) {
-                newList.insertItem(currentPos1.info);
+                // newList.insertItem(currentPos1.info);
+                currentPos1.next = currentPos2;
                 currentPos1 = currentPos1.next;
                 currentPos2 = currentPos2.next;
             } else if (currentPos1.info.compareTo(currentPos2.info) < 0) {
