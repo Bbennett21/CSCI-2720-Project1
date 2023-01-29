@@ -227,7 +227,6 @@ public class SortedLinkedList {
                 currentPos2 = currentPos2.next;
             }
         }
-        return newList;
     }
 
 } // SortedLinkedList

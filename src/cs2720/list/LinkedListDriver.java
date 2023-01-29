@@ -47,7 +47,22 @@ public class LinkedListDriver {
                  System.out.print("The list is: ");
                  list.printList();
              } else if(cmdInput.equals("t")) {
-
+                 System.out.print("Enter the length of the new list: ");
+                 int length = userInput.nextInt();
+                 System.out.print("Enter the numbers: ");
+                 SortedLinkedList list2 = new SortedLinkedList();
+                 for(int i = 0; i < length; i++) {
+                     ItemType item2 = new ItemType();
+                     item2.initialize(userInput.nextInt());
+                     list2.insertItem(item2);
+                 } // while
+                 System.out.print("List 1: ");
+                 list.printList();
+                 System.out.print("List 2: ");
+                 list2.printList();
+                 list.intersect(list2);
+                 System.out.print("New List: ");
+                 list.printList();
 			 } else if(cmdInput.equals("m")) {
                  System.out.print("Enter the length of the new list: ");
                  int length = userInput.nextInt();
@@ -66,7 +81,7 @@ public class LinkedListDriver {
                  System.out.print("New List: ");
                  list.printList();
              } else if(cmdInput.equals("a")) {
-
+                 list.deleteAlt();
              } else if(cmdInput.equals("r")) {
                  list.resetList();
                  System.out.println("Iterator is reset");
