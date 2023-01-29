@@ -129,7 +129,9 @@ public class SortedLinkedList {
             System.out.println("The end of the list has been reached");
             return null;
         } // if
+        else {
         currentPos = currentPos.next;
+        }
         return currentPos.info;
     } // getNextItem
 
@@ -170,18 +172,62 @@ public class SortedLinkedList {
         if (head == null) {
             System.out.println("You can't delete from an empty list");
         }
-        else {
-            int index = 1;
 
+        NodeType temp = head;
+        while (temp != null && temp.next != null) {
+            NodeType delete = temp.next;
+            temp.next = delete.next;
+            delete.next = null;
+
+            temp = temp.next;
         }
-    }
+
+/*
+        else {
+            int index = 0;
+            NodeType current = head;
+            NodeType single = null;
+            while (current != null) {
+                if (index % 2 == 0) {
+                    if (single) {
+                        single.next = current.next;
+                    }
+                    current.next = null;
+                    continue;
+                }
+                single = current;
+            }
+        }
+*/
+    } // deleteAlt
 
     /**
      * Finds the common elements between input list and original list,
      * and then prints the results.
      */
-    public void intersect(int num, String input) {
+    public void intersect(SortedLinkedList list2) {
 
+        NodeType head1 = this.head;
+        NodeType head2 = list2.head;
+
+        SortedLinkedList newList = new SortedLinkedList();
+
+        NodeType currentPos1 = head1;
+        NodeType currentPos2 = head2;
+
+        while (currentPos1 != null && currentPos2 != null) {
+
+            if (currentPos1.info == currentPos2.info) {
+                newList.insertItem(currentPos1.info);
+                currentPos1 = currentPos1.next;
+                currentPos2 = currentPos2.next;
+            } else if (currentPos1.info.compareTo(currentPos2.info) < 0) {
+                currentPos1 = currentPos1.next;
+            } else {
+                currentPos2 = currentPos2.next;
+            }
+        }
+        return newList;
     }
 
 } // SortedLinkedList
