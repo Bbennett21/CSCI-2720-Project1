@@ -38,6 +38,7 @@ public class SortedLinkedList {
         NodeType newNode = new NodeType();
         newNode.info = item;
         newNode.next = null;
+
         // If the list is empty, it creates a node that stores the item and sets the head to it.
         if (head == null) {
             head = newNode;
@@ -138,6 +139,17 @@ public class SortedLinkedList {
     public void resetList() {
         currentPos = null;
     } // resetList
+
+    /**
+     * Prints the list.
+     */
+    public void printList() {
+        NodeType position = head;
+        while (position != null) {
+            System.out.print(position.info.getValue() + " ");
+            position = position.next;
+        } // while
+    } // printList
 
     /**
      * Merges two lists and doesn't include any duplicate items in the list.

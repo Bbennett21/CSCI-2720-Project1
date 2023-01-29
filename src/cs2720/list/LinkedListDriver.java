@@ -20,8 +20,9 @@ public class LinkedListDriver {
               File inputFile = new File(args[0]);
               Scanner scanFile = new Scanner(inputFile);
               while (scanFile.hasNext()) {
-                  item.initialize(scanFile.nextInt());
-                  list.insertItem(item);
+                  ItemType item1 = new ItemType();
+                  item1.initialize(scanFile.nextInt());
+                  list.insertItem(item1);
               } // while
 
           } catch (FileNotFoundException e) {
@@ -41,7 +42,7 @@ public class LinkedListDriver {
                  System.out.println("Length of list: " + list.getLength());
 
              } else if(cmdInput.equals("p")) {
-
+                 list.printList();
              } else if(cmdInput.equals("t")) {
 
 			 } else if(cmdInput.equals("m")) {
