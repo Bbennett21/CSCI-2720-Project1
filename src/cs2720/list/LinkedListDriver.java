@@ -1,6 +1,8 @@
 package cs2720.list;
 
 import java.util.Scanner;  // Import the Scanner class
+import java.io.File;
+import java.io.FileNotFoundException;
 import cs2720.list.ItemType;
 import cs2720.list.SortedLinkedList;
 
@@ -9,23 +11,28 @@ public class LinkedListDriver {
       public static void main(String[]args) {
 
           boolean quit = false;
-          String input;
-
-
-          Scanner scan = new Scanner(System.in);
+          String input = "";
           ItemType item = new ItemType();
           SortedLinkedList list = new SortedLinkedList();
 
-          while (scan.hasNext()) {
-              item.initialize(scan.nextInt());
-              list.insertItem(item);
-          } // while
+          try {
+              Scanner scanFile = new Scanner(new File(args[0]));
 
+              while (scanFile.hasNextInt()) {
+                  item.initialize(scanFile.nextInt());
+                  System.out.println(item.getValue());
+                  list.insertItem(item);
+              } // while
+
+          } catch (FileNotFoundException e) {
+              System.out.println("Error: Input file not found.");
+              return;
+          } // try
+          Scanner userInput = new Scanner(System.in);
 
           while(quit == false) {
-             System.out.println("Enter a command: ");
-             input = scan.next();
-
+             System.out.print("Enter a command: ");
+             input = userInput.next();
              if(input.equals("q")) {
                  quit = true;
              } else if(input.equals("l")) {
@@ -33,6 +40,7 @@ public class LinkedListDriver {
              } else if(input.equals("p")) {
 
              } else if(input.equals("t")) {
+
 			 } else if(input.equals("m")) {
 
              } else if(input.equals("a")) {
@@ -50,6 +58,6 @@ public class LinkedListDriver {
              } else {
 
              } // if
-			} // while
-		} // main
-	} // LinkedListDriver
+          } // while
+      } // main
+} // LinkedListDriver
