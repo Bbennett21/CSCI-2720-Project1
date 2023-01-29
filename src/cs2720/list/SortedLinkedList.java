@@ -149,13 +149,18 @@ public class SortedLinkedList {
             System.out.print(position.info.getValue() + " ");
             position = position.next;
         } // while
+        System.out.println();
     } // printList
 
     /**
      * Merges two lists and doesn't include any duplicate items in the list.
      */
-    public void merge(int num, String input) {
-
+    public void mergeList(SortedLinkedList list2) {
+        NodeType position2 = list2.head;
+        while (position2 != null) {
+            insertItem(position2.info);
+            position2 = position2.next;
+        } //while
     }
 
     /**

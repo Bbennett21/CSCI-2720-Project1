@@ -35,18 +35,24 @@ public class LinkedListDriver {
           while(quit == false) {
              System.out.print("Enter a command: ");
              cmdInput = userInput.next();
+
              if(cmdInput.equals("q")) {
+                 System.out.println("Exiting the program...");
                  quit = true;
 
              } else if(cmdInput.equals("l")) {
                  System.out.println("Length of list: " + list.getLength());
 
              } else if(cmdInput.equals("p")) {
+                 System.out.print("The list is: ");
                  list.printList();
              } else if(cmdInput.equals("t")) {
 
 			 } else if(cmdInput.equals("m")) {
+                 System.out.print("Enter the length of the new list: ");
+                 int length = userInput.nextInt();
 
+//                 list.mergeList();
              } else if(cmdInput.equals("a")) {
 
              } else if(cmdInput.equals("r")) {
@@ -62,21 +68,32 @@ public class LinkedListDriver {
                  System.out.print("Enter a number to search: ");
                  numInput = userInput.nextInt();
                  item.initialize(numInput);
+                 System.out.print("Original List: ");
+                 list.printList();
                  int index = list.searchItem(item);
+                 if (index != -1) {
                  System.out.println("Item is found at index: " + index);
+                 } // if
 
              } else if(cmdInput.equals("d")) {
                  System.out.print("Enter a number to delete: ");
                  numInput = userInput.nextInt();
                  item.initialize(numInput);
-                  list.deleteItem(item);
+                 System.out.print("Original List: ");
+                 list.printList();
+                 list.deleteItem(item);
+                 System.out.print("New List: ");
+                 list.printList();
 
              } else if(cmdInput.equals("i")) {
                  System.out.print("Enter a number to insert: ");
                  numInput = userInput.nextInt();
                  item.initialize(numInput);
+                 System.out.print("Original List: ");
+                 list.printList();
                  list.insertItem(item);
-
+                 System.out.print("New List: ");
+                 list.printList();
              } else {
                  System.out.println("Invalid command, try again!");
              } // if
