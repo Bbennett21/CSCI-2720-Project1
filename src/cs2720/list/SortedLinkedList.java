@@ -20,14 +20,16 @@ public class SortedLinkedList {
      * Returns the length of the linked list.
      */
     public int getLength() {
+
         int length = 0;
         NodeType temp = head;
+
         while (temp != null) {
             length++;
             temp = temp.next;
-        }
-        return length;
+        } // while
 
+        return length;
     } // getLength
 
     /**
@@ -35,6 +37,7 @@ public class SortedLinkedList {
      * @param item the item to be inserted.
      */
     public void insertItem(ItemType item) {
+
         NodeType newNode = new NodeType();
         newNode.info = item;
         newNode.next = null;
@@ -42,14 +45,19 @@ public class SortedLinkedList {
         // If the list is empty, it creates a node that stores the item and sets the head to it.
         if (head == null) {
             head = newNode;
+        // If the inserts the item if item < head
         } else if (head.info.compareTo(item) > 0) {
             newNode.next = head;
             head = newNode;
+        // Inserts the item in the middle/end of the list
         } else {
             NodeType location = head;
+
             while (location.next != null && item.compareTo(location.next.info) > 0) {
                 location = location.next;
             } //while
+
+            //checks for duplicates
             if (location.next != null && item.compareTo(location.next.info) == 0) {
                 System.out.println("Sorry. You cannot insert the duplicate item");
             } else {
@@ -78,7 +86,11 @@ public class SortedLinkedList {
         } // while
 
         if (!found) {
+            if(head == null) {
+                System.out.println("Cannot delete from an empty list");
+            } else {
             System.out.println("Item not found");
+            } // if
         } else if (current == head) {
             head = head.next;
         } else if (current.next == null) {
@@ -94,7 +106,7 @@ public class SortedLinkedList {
      */
     public int searchItem(ItemType item) {
         NodeType temp = head;
-        int index = 0;
+        int index = 1;
         boolean found = false;
         while (temp != null && !found) {
             if (temp.info.compareTo(item) == 0) {
@@ -106,7 +118,12 @@ public class SortedLinkedList {
         } // while
 
         if (!found) {
-            System.out.println("Item not found");
+            if(head == null) {
+                System.out.println("The list is empty");
+            } else {
+                System.out.println("Item not found");
+            } // if
+
             return -1;
         } else {
             return index;
@@ -128,10 +145,9 @@ public class SortedLinkedList {
         if (currentPos.next == null) {
             System.out.println("The end of the list has been reached");
             return null;
-        } // if
-        else {
+        } else {
         currentPos = currentPos.next;
-        }
+        } // if
         return currentPos.info;
     } // getNextItem
 
@@ -163,7 +179,7 @@ public class SortedLinkedList {
             insertItem(position2.info);
             position2 = position2.next;
         } //while
-    }
+    } // mergeList
 
     /**
      * Deletes alternate nodes from the list.
@@ -171,16 +187,15 @@ public class SortedLinkedList {
     public void deleteAlt() {
         if (head == null) {
             System.out.println("You can't delete from an empty list");
-        }
+        } // if
 
         NodeType temp = head;
         while (temp != null && temp.next != null) {
             NodeType delete = temp.next;
             temp.next = delete.next;
             delete.next = null;
-
             temp = temp.next;
-        }
+        } // while
 
     } // deleteAlt
 
@@ -206,9 +221,9 @@ public class SortedLinkedList {
 
             if (!found) {
                 deleteItem(current.info);
-            }
+            } // if
             current = current.next;
         } // while
-    }
+    } // intersect
 
 } // SortedLinkedList
