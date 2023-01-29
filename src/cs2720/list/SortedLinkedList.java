@@ -8,8 +8,6 @@ public class SortedLinkedList {
     private NodeType head;
     private NodeType currentPos;
 
-    int length = 0;
-
     /**
      * Initializes a sorted linked list object.
      */
@@ -25,6 +23,7 @@ public class SortedLinkedList {
      */
     public int getLength() {
 
+        int length = 0;
         NodeType currentPos = head;
         while (currentPos != null) {
             length++;
@@ -45,18 +44,35 @@ public class SortedLinkedList {
         // If the list is empty, it creates a node that stores the item and sets the head to it.
         if (head == null) {
 
-            newNode.info = item;
+            newNode item = item;
             newNode.next = null;
             head = newNode;
 
             //If the item is less than 0,
-        } else if (item.compareTo(head.info) < 0) {
+        } else if (item.compareTo(head.item) < 0) {
 
-            newNode.info = item;
+            newNode item = item;
             newNode.next = head;
             head = newNode;
+
         } else {
+
             NodeType predloc;
+            NodeType location = head;
+
+            while (location != null) {
+                if (item.compareTo(location) < 0) {
+                    break;
+                }
+
+                if (item.compareTo(location) == 0) {
+                    System.out.println("You can't insert a duplicate item");
+                    return;
+                }
+
+            }
+            predLoc = location;
+            location = location.next;
 
         }
 
@@ -84,7 +100,26 @@ public class SortedLinkedList {
      * @param item the item to search for.
      */
     public int searchItem(ItemType item) {
-        return 0;
+
+        NodeType temp = head;
+        if (temp == null) {
+            return -1;
+        }
+
+        int index = 0;
+
+
+        while (temp != null) {
+            if (item.compareTo(temp.item) == 0) {
+                return index;
+            }
+            index++;
+        }
+
+
+
+
+        return -1;
     } // searchItem
 
     /**
@@ -94,9 +129,16 @@ public class SortedLinkedList {
 
         // Tells the user that the list is empty
         if (head == null) {
+            ItemType temp;
             System.out.println("The list is empty");
         }
-        return head.info;
+        if (currentPos.next == null || currentPos == null) {
+            currentPos = head;
+        }
+        else {
+            currentPos = currentPos.next;
+        }
+        return currentPos.item;
     } // getNextItem
 
     /**
@@ -104,6 +146,36 @@ public class SortedLinkedList {
      */
     public void resetList() {
 
+        currentPos = null;
+
     } // resetList
+
+    /**
+     * Merges two lists and doesn't include any duplicate items in the list.
+     */
+    public void merge(int num, string input) {
+
+    }
+
+    /**
+     * Deletes alternate nodes from the list.
+     */
+    public void deleteAlt() {
+        if (head == null) {
+            System.out.println("You can't delete from an empty list");
+        }
+        else {
+            int index = 1;
+
+        }
+    }
+
+    /**
+     * Finds the common elements between input list and original list,
+     * and then prints the results.
+     */
+    public void intersect(int num, string input) {
+
+    }
 
 } // SortedLinkedList
