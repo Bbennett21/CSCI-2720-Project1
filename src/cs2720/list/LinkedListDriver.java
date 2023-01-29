@@ -51,12 +51,25 @@ public class LinkedListDriver {
 			 } else if(cmdInput.equals("m")) {
                  System.out.print("Enter the length of the new list: ");
                  int length = userInput.nextInt();
-
-//                 list.mergeList();
+                 System.out.print("Enter the numbers: ");
+                 SortedLinkedList list2 = new SortedLinkedList();
+                 for(int i = 0; i < length; i++) {
+                     ItemType item2 = new ItemType();
+                     item2.initialize(userInput.nextInt());
+                     list2.insertItem(item2);
+                 } // while
+                 System.out.print("List 1: ");
+                 list.printList();
+                 System.out.print("List 2: ");
+                 list2.printList();
+                 list.mergeList(list2);
+                 System.out.print("New List: ");
+                 list.printList();
              } else if(cmdInput.equals("a")) {
 
              } else if(cmdInput.equals("r")) {
                  list.resetList();
+                 System.out.println("Iterator is reset");
              } else if(cmdInput.equals("n")) {
                  if (item != null) {
                      System.out.println("Next item: " + item.getValue());
