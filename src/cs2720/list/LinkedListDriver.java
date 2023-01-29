@@ -82,15 +82,18 @@ public class LinkedListDriver {
                  list.printList();
              } else if(cmdInput.equals("a")) {
                  list.deleteAlt();
+
              } else if(cmdInput.equals("r")) {
-                 list.resetList();
+                 //list.currentPos = list.head;
                  System.out.println("Iterator is reset");
+
              } else if(cmdInput.equals("n")) {
-                 if (item != null) {
-                     System.out.println("Next item: " + item.getValue());
-                 } else {
-                     System.out.println("The end of the list has been reached");
-                 } // if
+                 // if (item != null) {
+                 //  System.out.println("Next item: " + list.currentPos.info.getValue());
+                 //  list.currentPos = list.currentPos.next;
+                 //} else {
+                 //    System.out.println("The end of the list has been reached");
+                 //} // if
 
              } else if(cmdInput.equals("s")) {
                  System.out.print("Enter a number to search: ");

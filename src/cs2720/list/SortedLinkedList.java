@@ -190,27 +190,25 @@ public class SortedLinkedList {
      */
     public void intersect(SortedLinkedList list2) {
 
-        NodeType head1 = this.head;
-        NodeType head2 = list2.head;
+        NodeType current = head;
 
-//        SortedLinkedList newList = new SortedLinkedList();
+        while (current != null) {
+            boolean found = false;
+            NodeType secondCurrent = list2.head;
+            while (secondCurrent != null) {
+                if (current.info.compareTo(secondCurrent.info) == 0) {
+                    found = true;
+                    break;
+                } // if
+                secondCurrent = secondCurrent.next;
+            } // while
 
-        NodeType currentPos1 = head1;
-        NodeType currentPos2 = head2;
 
-        while (currentPos1 != null && currentPos2 != null) {
-
-            if (currentPos1.info == currentPos2.info) {
-                // newList.insertItem(currentPos1.info);
-                currentPos1.next = currentPos2;
-                currentPos1 = currentPos1.next;
-                currentPos2 = currentPos2.next;
-            } else if (currentPos1.info.compareTo(currentPos2.info) < 0) {
-                currentPos1 = currentPos1.next;
-            } else {
-                currentPos2 = currentPos2.next;
+            if (!found) {
+                deleteItem(current.info);
             }
-        }
+            current = current.next;
+        } // while
     }
 
 } // SortedLinkedList
