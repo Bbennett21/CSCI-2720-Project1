@@ -76,7 +76,11 @@ public class SortedLinkedList {
         NodeType previous = null;
         boolean found = false;
 
+<<<<<<< HEAD
         // checks for item
+=======
+        // Loops through the list until the node with the item is found and then removes it
+>>>>>>> 0e01a82a8a317c64c5fd4cadf3a949c3ef628031
         while (current != null && !found) {
             if (current.info.compareTo(item) == 0) {
                 found = true;
@@ -86,7 +90,11 @@ public class SortedLinkedList {
             } // if
         } // while
 
+<<<<<<< HEAD
         // deletes item
+=======
+        // If it isn't found it tells the user you can't delete from an empty list
+>>>>>>> 0e01a82a8a317c64c5fd4cadf3a949c3ef628031
         if (!found) {
             if(head == null) {
                 System.out.println("Cannot delete from an empty list");
@@ -110,8 +118,12 @@ public class SortedLinkedList {
         NodeType temp = head;
         int index = 1;
         boolean found = false;
+<<<<<<< HEAD
 
         // searches for item
+=======
+        // Loops through the list until the item is found and increases the index each time
+>>>>>>> 0e01a82a8a317c64c5fd4cadf3a949c3ef628031
         while (temp != null && !found) {
             if (temp.info.compareTo(item) == 0) {
                 found = true;
@@ -121,7 +133,11 @@ public class SortedLinkedList {
             } // if
         } // while
 
+<<<<<<< HEAD
         // prints if item is nit found
+=======
+        // If it isn't found then tells the user it isn't found or if the list is empty
+>>>>>>> 0e01a82a8a317c64c5fd4cadf3a949c3ef628031
         if (!found) {
             if(head == null) {
                 System.out.println("The list is empty");
@@ -198,6 +214,7 @@ public class SortedLinkedList {
         } // if
 
         NodeType temp = head;
+        // Loops through the list and removes the alternate nodes
         while (temp != null && temp.next != null) {
             NodeType delete = temp.next;
             temp.next = delete.next;
@@ -218,6 +235,7 @@ public class SortedLinkedList {
         while (current != null) {
             boolean found = false;
             NodeType secondCurrent = list2.head;
+            // Loops through the list and if the elements are the same it sets it as next
             while (secondCurrent != null) {
                 if (current.info.compareTo(secondCurrent.info) == 0) {
                     found = true;
@@ -226,7 +244,7 @@ public class SortedLinkedList {
                 secondCurrent = secondCurrent.next;
             } // while
 
-
+            // Removes the nodes that aren't the same
             if (!found) {
                 deleteItem(current.info);
             } // if
