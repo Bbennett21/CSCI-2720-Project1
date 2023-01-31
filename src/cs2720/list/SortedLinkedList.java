@@ -76,6 +76,7 @@ public class SortedLinkedList {
         NodeType previous = null;
         boolean found = false;
 
+        // checks for item
         while (current != null && !found) {
             if (current.info.compareTo(item) == 0) {
                 found = true;
@@ -85,6 +86,7 @@ public class SortedLinkedList {
             } // if
         } // while
 
+        // deletes item
         if (!found) {
             if(head == null) {
                 System.out.println("Cannot delete from an empty list");
@@ -108,6 +110,8 @@ public class SortedLinkedList {
         NodeType temp = head;
         int index = 1;
         boolean found = false;
+
+        // searches for item
         while (temp != null && !found) {
             if (temp.info.compareTo(item) == 0) {
                 found = true;
@@ -117,6 +121,7 @@ public class SortedLinkedList {
             } // if
         } // while
 
+        // prints if item is nit found
         if (!found) {
             if(head == null) {
                 System.out.println("The list is empty");
@@ -134,14 +139,17 @@ public class SortedLinkedList {
      * Returns the next item in the list pointed by the currentPos.
      */
     public ItemType getNextItem() {
+        //checks if empty
         if (head == null) {
             System.out.println("List is empty");
             return null;
         } // if
+        //iterates
         if (currentPos == null) {
             currentPos = head;
             return currentPos.info;
         } // if
+        //checks for end
         if (currentPos.next == null) {
             System.out.println("The end of the list has been reached");
             return null;

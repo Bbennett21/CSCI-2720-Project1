@@ -36,17 +36,21 @@ public class LinkedListDriver {
              System.out.print("Enter a command: ");
              cmdInput = userInput.next();
 
+             // exits
              if(cmdInput.equals("q")) {
                  System.out.println("Exiting the program...");
                  quit = true;
 
+                 // prints the length
              } else if(cmdInput.equals("l")) {
                  System.out.println("Length of list: " + list.getLength());
 
+                 // prints list
              } else if(cmdInput.equals("p")) {
                  System.out.print("The list is: ");
                  list.printList();
 
+                 // keeps the cross of 2 lists
              } else if(cmdInput.equals("t")) {
                  System.out.print("Enter the length of the new list: ");
                  int length = userInput.nextInt();
@@ -65,6 +69,7 @@ public class LinkedListDriver {
                  System.out.print("New List: ");
                  list.printList();
 
+                 // merges 2 lsits
 			 } else if(cmdInput.equals("m")) {
                  System.out.print("Enter the length of the new list: ");
                  int length = userInput.nextInt();
@@ -83,21 +88,26 @@ public class LinkedListDriver {
                  System.out.print("New List: ");
                  list.printList();
 
+                 // deletes alternate nodes
              } else if(cmdInput.equals("a")) {
                  System.out.print("Original List: ");
                  list.printList();
                  list.deleteAlt();
                  System.out.print("New List: ");
                  list.printList();
+                 // resets iterator
              } else if(cmdInput.equals("r")) {
                  list.resetList();
                  System.out.println("Iterator is reset");
 
+                 // gets next item
              } else if(cmdInput.equals("n")) {
                  ItemType current = list.getNextItem();
                  if(current != null) {
                      System.out.println(current.getValue());
                  } // if
+
+                 //searches for an item
              } else if(cmdInput.equals("s")) {
                  System.out.print("Enter a number to search: ");
                  numInput = userInput.nextInt();
@@ -109,6 +119,7 @@ public class LinkedListDriver {
                  System.out.println("Item is found at index: " + index);
                  } // if
 
+                 // deletes an item
              } else if(cmdInput.equals("d")) {
                  System.out.print("Enter a number to delete: ");
                  int numDelete = userInput.nextInt();
@@ -120,6 +131,7 @@ public class LinkedListDriver {
                  System.out.print("New List: ");
                  list.printList();
 
+                 //inserts an item
              } else if(cmdInput.equals("i")) {
                  System.out.print("Enter a number to insert: ");
                  int numInsert = userInput.nextInt();
